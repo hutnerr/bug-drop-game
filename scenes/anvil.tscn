@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2rsfa8hdq7tv"]
+
+[ext_resource type="Script" path="res://scripts/anvil.gd" id="1_kaklk"]
+[ext_resource type="Texture2D" uid="uid://cwrexsc3a2xcq" path="res://assets/anivl.png" id="1_shtcv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn0fy"]
+size = Vector2(75, 43.25)
+
+[node name="Area2D" type="Area2D" groups=["hazards"]]
+script = ExtResource("1_kaklk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -21.375)
+shape = SubResource("RectangleShape2D_jn0fy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -12)
+scale = Vector2(4.20313, 4.20313)
+texture = ExtResource("1_shtcv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

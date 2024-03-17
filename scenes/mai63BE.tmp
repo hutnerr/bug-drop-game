@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://cye2rueypwkyd"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_ny74v"]
+[ext_resource type="PackedScene" uid="uid://c13dt51p0jsdr" path="res://scenes/player.tscn" id="2_veia3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qoiue"]
+size = Vector2(1287, 115)
+
+[sub_resource type="Curve2D" id="Curve2D_nrwdn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 35, -2, 0, 0, 0, 0, 1125, -1)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvbin"]
+size = Vector2(1344, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mrh5"]
+size = Vector2(107.5, 680.75)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ny74v")
+
+[node name="Despawn Floor" type="Area2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Despawn Floor"]
+offset_left = -93.0
+offset_top = 610.0
+offset_right = 1247.0
+offset_bottom = 831.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Despawn Floor"]
+position = Vector2(591, 659)
+shape = SubResource("RectangleShape2D_qoiue")
+
+[node name="Player" parent="." instance=ExtResource("2_veia3")]
+position = Vector2(573, 585)
+
+[node name="Score Label" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 349.0
+offset_bottom = 93.0
+text = "Score: 0"
+
+[node name="Spawn Path" type="Path2D" parent="."]
+curve = SubResource("Curve2D_nrwdn")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Spawn Path"]
+unique_name_in_owner = true
+position = Vector2(792.299, -1.30523)
+rotation = 0.000917431
+progress = 757.299
+
+[node name="Walls And Floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls And Floor"]
+position = Vector2(575, 699)
+shape = SubResource("RectangleShape2D_qvbin")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls And Floor"]
+position = Vector2(-42, 309.375)
+shape = SubResource("RectangleShape2D_4mrh5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls And Floor"]
+position = Vector2(1199, 309.375)
+shape = SubResource("RectangleShape2D_4mrh5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="Despawn Floor" to="." method="_on_despawn_floor_body_entered"]
+[connection signal="bugCollected" from="Player" to="." method="_on_player_bug_collected"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

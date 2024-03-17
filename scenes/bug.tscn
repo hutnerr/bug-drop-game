@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://da7ixjojv5p34"]
+
+[ext_resource type="Script" path="res://scripts/bug.gd" id="1_kylty"]
+[ext_resource type="Texture2D" uid="uid://b1sta71p6s5tb" path="res://assets/1709606466733.png" id="2_84acj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tks1r"]
+radius = 23.0
+height = 70.0
+
+[node name="Buggy" type="Area2D" groups=["bugs"]]
+script = ExtResource("1_kylty")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -36)
+shape = SubResource("CapsuleShape2D_tks1r")
+
+[node name="BugSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -39)
+scale = Vector2(0.0714286, 0.0714286)
+texture = ExtResource("2_84acj")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
