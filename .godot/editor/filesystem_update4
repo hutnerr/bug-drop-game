@@ -2,3 +2,4 @@ res://scenes/main.tscn
 res://scenes/player.tscn
 res://scenes/bug.tscn
 res://scenes/anvil.tscn
+res://scripts/anvil.gd
