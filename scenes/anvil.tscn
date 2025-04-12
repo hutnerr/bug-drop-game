@@ -18,4 +18,5 @@ position = Vector2(1, -12)
 scale = Vector2(4.20313, 4.20313)
 texture = ExtResource("1_shtcv")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

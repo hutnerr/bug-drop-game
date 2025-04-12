@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bperx3i3ec4mo"]
+
+[ext_resource type="Script" path="res://scripts/gameover.gd" id="1_qhxcb"]
+
+[node name="GameOver" type="Panel"]
+process_mode = 2
+z_index = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qhxcb")
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 396.0
+offset_top = 273.0
+offset_right = 797.0
+offset_bottom = 361.0
+theme_override_font_sizes/font_size = 64
+text = "womp womp"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 433.0
+offset_right = 577.0
+offset_bottom = 531.0
+theme_override_font_sizes/font_size = 54
+text = "Quit"
+
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 430.0
+offset_right = 957.0
+offset_bottom = 534.0
+theme_override_font_sizes/font_size = 64
+text = "Retry
+"
+
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]

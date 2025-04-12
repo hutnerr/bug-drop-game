@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cye2rueypwkyd"]
+[gd_scene load_steps=10 format=3 uid="uid://cye2rueypwkyd"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_ny74v"]
 [ext_resource type="Texture2D" uid="uid://mveli6rq5o0u" path="res://assets/Sprite-background.png" id="2_2g8ug"]
 [ext_resource type="PackedScene" uid="uid://c13dt51p0jsdr" path="res://scenes/player.tscn" id="2_veia3"]
 [ext_resource type="Texture2D" uid="uid://bssh7xogrmvwt" path="res://assets/fence.png" id="4_kupph"]
+[ext_resource type="PackedScene" uid="uid://bperx3i3ec4mo" path="res://scenes/gameoverscreen.tscn" id="5_sxpyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qoiue"]
 size = Vector2(1287, 115)
@@ -44,6 +45,10 @@ offset_bottom = 62.0
 theme_override_colors/font_color = Color(0.764706, 0.219608, 0.772549, 1)
 theme_override_font_sizes/font_size = 50
 text = "Health: 5"
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("5_sxpyj")]
+unique_name_in_owner = true
+visible = false
 
 [node name="Sprite-background" type="Sprite2D" parent="."]
 texture_filter = 1

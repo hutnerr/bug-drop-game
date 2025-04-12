@@ -27,7 +27,9 @@ func spawn_anvil():
 	anvil.add_to_group("hazards")
 	add_child(anvil)
 
-
 func _on_player_damage_taken():
 	health -= 1
 	%"Health Label".text = "Health: " + str(health)
+	if health <= 0:
+		%GameOver.visible = true
+		get_tree().paused = true

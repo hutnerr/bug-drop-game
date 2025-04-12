@@ -1,6 +1,7 @@
 extends Area2D
 
 var velocity = Vector2.ZERO
+var speed = randi_range(150, 250)
 
 const SPRITES = [
 "res://assets/1709506744300.png",
@@ -18,7 +19,4 @@ func _ready():
 	$BugSprite.texture = load(SPRITES[randi() % SPRITES.size()])
 
 func _physics_process(delta):
-	position.y += 200 * delta
-
-func _on_area_entered(area):
-	queue_free()
+	position.y += speed * delta

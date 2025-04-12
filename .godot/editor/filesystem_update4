@@ -2,4 +2,9 @@ res://scenes/main.tscn
 res://scenes/player.tscn
 res://scenes/bug.tscn
 res://scenes/anvil.tscn
+res://scripts/main.gd
 res://scripts/anvil.gd
+res://scripts/bug.gd
+res://scripts/player.gd
+res://scenes/gameoverscreen.tscn
+res://scripts/gameover.gd

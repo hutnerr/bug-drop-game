@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 signal bugCollected
-signal damageTaken
+signal damageTaken(amount)
 
 const SPEED = 500.0
 const JUMP_VELOCITY = -400.0
@@ -27,7 +27,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_net_area_entered(area):
+	area.queue_free() # ensure the sprite is deleted
 	if area.is_in_group("bugs"):
 		bugCollected.emit()
 	elif area.is_in_group("hazards"):
-		damageTaken.emit()
+		damageTaken.emit(1)
